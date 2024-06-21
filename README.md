@@ -64,11 +64,21 @@ IoT 오픈하드웨어 플랫폼 활용 레포지토리
 
 - 인터럽트(interrupt)
     - 우선순위
+
 - 부저 실습
     - 음계, 주파수
-
+    - 부저를 이용한 전자 키보드 구현하기
+        - 숫자(1~8) 입력시 해당하는 음계 
 ## 2일차
 - 적외선 감지 센서 실습
+    - 동작 인식시 print()함수 이용하여 감지 확인 출력
+    - 동작 인식시 led가 켜지는 기능 구현
+        - 적외선 감지 센서, led
+<figure class="half">  
+    <a href="link"><img src="https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi009.png"></a> 
+    <a href="link"><img src="https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi010.png"></a> 
+</figure>
+
 
 - 환경설정
     - version 확인
@@ -85,4 +95,28 @@ IoT 오픈하드웨어 플랫폼 활용 레포지토리
     - gpio readall 입력으로 확인
 
     ![확인 결과](https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi006.png)
+
 - 초음파 센서 실습
+    - print() 함수 이용 거리 출력하기
+    - 충돌방지 경고음 구현하기
+        - 부저 + 초음파 센서 이용
+        - 거리가 5cm 이하일때 경고음 발생
+        ```python
+        try:
+            while True:
+                distance = measure()
+                if distance <= 5:
+                    Buzz.start(50)
+                    for i in range(0, len(melody)) :
+                        Buzz.ChangeFrequency(melody[i])
+                        time.sleep(0.3)
+                    Buzz.stop()
+                    print("Distance is 5cm under!! : %.2f cm" %distance)
+                    time.sleep(1)
+                else:
+                    print("Distance: %.2f cm" %distance)
+        ```
+<figure class="half">  
+    <a href="link"><img src="https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi007.png"></a> 
+    <a href="link"><img src="https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi008.png"></a> 
+</figure>
