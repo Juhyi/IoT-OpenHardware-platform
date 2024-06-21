@@ -9,7 +9,11 @@ IoT 오픈하드웨어 플랫폼 활용 레포지토리
         - 전압(V) - 전기회로에서 전류를 흐르게 하는 능력 [V] 단위 
         - 저항(R) - 전기희 흐름을 방해
     - 키르히호프 법칙
-
+        - 키르히호프 1법칙 : kirchhoff's Current Law(KCL) -전류법칙
+            - 회로중의 어떤 분기점에 들어간 전류와 나가는 전류의 합은 같다.
+        - 키르히호프 2법칙 : kirchhoff's voltage Law(KVL) - 전압법칙
+            - 회로 중의 임의의 폐회로에서 전원전압(기전력)과 부하로 소비되는 전압(전압강하)의 합은 동일해진다.
+        
 - putty에서 라즈베리파이 PinMap 확인하기
     - putty 창에서 pinout 입력
     - [확인화면]
@@ -33,8 +37,8 @@ IoT 오픈하드웨어 플랫폼 활용 레포지토리
             - channel: 핀번호, 반환값: H/L or 1/0 or T/F
     - 시간지연 함수
         - time.sleep(secs)
-- 
 - led 실습
+
 - 디지털에서 Switch
     - 풀업 저항
         - Vcc에 저항 연결
@@ -54,21 +58,20 @@ IoT 오픈하드웨어 플랫폼 활용 레포지토리
         <a href="link"><img src="https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi003.png"></a> 
 </figure>
 
+- 실습
+    - 스위치 풀다운 
+        - 스위치는 서로 마주보고 있는 A와 D가 연결되어 있고 B와 C가 서로 연결
+        - A- Vcc 연결, C- GPIO, B- 저항, GND 연결
 
-- 스위치 풀다운 실습
-    - 스위치는 서로 마주보고 있는 A와 D가 연결되어 있고 B와 C가 서로 연결
-    - A- Vcc 연결, C- GPIO, B- 저항, GND 연결
-
-    ![확인 결과](https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi005.png)
-
-
-- 인터럽트(interrupt)
-    - 우선순위
+        ![확인 결과](https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi005.png)
+    - 스위치 실습
+        - 버튼을 누를때마다 led 색이 바뀌는 기능 구현하기
 
 - 부저 실습
     - 음계, 주파수
     - 부저를 이용한 전자 키보드 구현하기
-        - 숫자(1~8) 입력시 해당하는 음계 
+        - 숫자(1~8) 입력시 해당하는 음계 소리 출력
+         
 ## 2일차
 - 적외선 감지 센서 실습
     - 동작 인식시 print()함수 이용하여 감지 확인 출력
