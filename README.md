@@ -14,8 +14,8 @@ IoT 오픈하드웨어 플랫폼 활용 레포지토리
     - putty 창에서 pinout 입력
     - [확인화면]
 <figure class="half">  
-    <a href="link"><img src="https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi001.png" weight="30"|height="30"></a> 
-    <a href="link"><img src="https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi002.png" weight="30"|height="30"></a> 
+    <a href="link"><img src="https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi001.png" weight="20"|height="30"></a> 
+    <a href="link"><img src="https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi002.png" weight="20"|height="30"></a> 
 </figure>
 
 - 실습에 필요한 기본적인 함수
