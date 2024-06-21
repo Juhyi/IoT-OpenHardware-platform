@@ -48,9 +48,9 @@ IoT 오픈하드웨어 플랫폼 활용 레포지토리
         - 스위치를 닫아 on 상태가 되면 전류는 Vcc핀으로 흐르게 되어 A는 High(1)값 
 <figure class="half">  
     <p4>풀업저항</p4>
-    <a href="link"><img src="https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi004.png" weight="10"|height="10%"></a> 
+    <a href="link"><img src="https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi004.png"></a> 
     <p4>풀다운저항</p4>
-    <a href="link"><img src="https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi003.png" weight="10"|height="10%"></a> 
+    <a href="link"><img src="https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi003.png"></a> 
 </figure>
 
 
