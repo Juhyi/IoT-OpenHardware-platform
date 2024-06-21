@@ -47,10 +47,11 @@ IoT 오픈하드웨어 플랫폼 활용 레포지토리
         - Off 상태일때 A에는 항상 GND와 연결되어 Low값(0) 
         - 스위치를 닫아 on 상태가 되면 전류는 Vcc핀으로 흐르게 되어 A는 High(1)값 
 <figure class="half">  
-    <p4>풀업저항</p4>
-    <a href="link"><img src="https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi004.png"></a> 
-    <p4>풀다운저항</p4>
-    <a href="link"><img src="https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi003.png"></a> 
+    <p4>[풀업저항]-
+        <a href="link"><img src="https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi004.png"></a> 
+    </p4>
+    <p4>[풀다운저항]-</p4>
+        <a href="link"><img src="https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi003.png"></a> 
 </figure>
 
 
