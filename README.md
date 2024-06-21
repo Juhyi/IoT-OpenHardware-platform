@@ -12,11 +12,10 @@ IoT 오픈하드웨어 플랫폼 활용 레포지토리
 
 - putty에서 라즈베리파이 PinMap 확인하기
     - putty 창에서 pinout 입력
-
+    - [확인화면]
 <figure class="half">  
-    <a href="link"><img src="https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi001.png"></a> 
-    <a href="link"><img src="https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi002.png"></a> 
-    <figcaption>2개이미지.</figcaption>
+    <a href="link"><img src="https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi001.png" weight="30"|height="30"></a> 
+    <a href="link"><img src="https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi002.png" weight="30"|height="30"></a> 
 </figure>
 
 - 실습에 필요한 기본적인 함수
@@ -42,16 +41,18 @@ IoT 오픈하드웨어 플랫폼 활용 레포지토리
         - off : input(1), on : input(0)
         - Off 상태일때 A에는 항상 5V의 전압이 걸려 HIGH(1) 값
         - 스위치를 닫아 On 상태가 되면 대부분의 전류는 GND로 흘러 A는 Low(0)값 
-
-    ![풀업 저항](https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi004.png)
-    
     - 풀다운 저항
         - GND에 저항 연결
         - off : input(0), on : input(1)
         - Off 상태일때 A에는 항상 GND와 연결되어 Low값(0) 
         - 스위치를 닫아 on 상태가 되면 전류는 Vcc핀으로 흐르게 되어 A는 High(1)값 
+<figure class="half">  
+    <p4>풀업저항</p4>
+    <a href="link"><img src="https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi004.png" weight="30"|height="10%"></a> 
+    <p4>풀다운저항</p4>
+    <a href="link"><img src="https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi003.png" weight="30"|height="10%"></a> 
+</figure>
 
-    ![풀다운 저항](https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi003.png)
 
 - 스위치 풀다운 실습
     - 스위치는 서로 마주보고 있는 A와 D가 연결되어 있고 B와 C가 서로 연결
