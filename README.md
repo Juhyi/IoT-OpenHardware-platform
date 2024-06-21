@@ -75,8 +75,8 @@ IoT 오픈하드웨어 플랫폼 활용 레포지토리
     - 동작 인식시 led가 켜지는 기능 구현
         - 적외선 감지 센서, led
 <figure class="half">  
-    <a href="link"><img src="https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi009.png"></a> 
     <a href="link"><img src="https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi010.png"></a> 
+    <a href="link"><img src="https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi009.png"></a> 
 </figure>
 
 
@@ -117,6 +117,6 @@ IoT 오픈하드웨어 플랫폼 활용 레포지토리
                     print("Distance: %.2f cm" %distance)
         ```
 <figure class="half">  
-    <a href="link"><img src="https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi007.png"></a> 
     <a href="link"><img src="https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi008.png"></a> 
+    <a href="link"><img src="https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi007.png"></a> 
 </figure>
