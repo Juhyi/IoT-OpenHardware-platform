@@ -141,7 +141,7 @@ IoT 오픈하드웨어 플랫폼 활용 레포지토리
         - 릴레이 led 제어하기
             - 릴레이 연결 배선
     
-    ![웹페이지 화면](https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi015.png)
+    ![릴레이 연결배선](https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi015.png.jpg)
 
 - 모터 + 모터 드라이버 실습
     - 스텝 모터
