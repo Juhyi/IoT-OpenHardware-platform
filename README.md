@@ -129,7 +129,7 @@ IoT 오픈하드웨어 플랫폼 활용 레포지토리
     - 릴레이 
         - 검출된 정보를 갖고 있는 제어 전류의 유무 또는 방향에 따라 다른 회로를 개폐하는 장치
         - 즉, 입력이 어떤 값에 도달하였을 때 작동하여 다른 회로를 개폐하는 장치로 일종의 자동 스위치
-        - 낮은 전압을 이용하여 더 높은 전얍을 제어하는데 많이 사용됨
+        - 낮은 전압을 이용하여 더 높은 전압을 제어하는데 많이 사용됨
         - 교류, 직류 구분 없이 사용 가능
         - 잡음 발생, 접점 부의가 마모되어 고장 날 수 있음
     - 동작 순서
@@ -138,10 +138,14 @@ IoT 오픈하드웨어 플랫폼 활용 레포지토리
     ![릴레이](https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi011.png)
     
     - 실습
+        - 릴레이 led 제어하기
+            - 릴레이 연결 배선
+    
+    ![웹페이지 화면](https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi015.png)
 
 - 모터 + 모터 드라이버 실습
     - 스텝 모터
-        - step 상태에서 pulse에 순서를 부여하여 주어진 펄스 수에 비례한 각도 ㅁ나큼 회전하는 모터
+        - step 상태에서 pulse에 순서를 부여하여 주어진 펄스 수에 비례한 각도만큼 회전하는 모터
         - 한 바퀴의 회전을 많은 수의 스텝으로 나눌 수 있는 직류 전기 모터
         - 입력 신호에 따라 일정 각도를 회전하므로 위치 정보를 반환하지 않고도 현재의 위치 정보를 알 수 있다
     
@@ -150,17 +154,55 @@ IoT 오픈하드웨어 플랫폼 활용 레포지토리
     - 실습
         - 기초 실습
         - 기초 실습 for문으로 구현하기
+        ```py
+        
+        step_seq = [
+            [0, 0, 0, 1],
+            [0, 0, 1, 0],
+            [0, 1, 0, 0],
+            [1, 0, 0, 0]
+        ]
 
-- flask 프레임워크
+        try:
+            while True:
+                for seq in step_seq:
+                    for pin in range(4):
+                        GPIO.output(steps[pin], seq[pin])
+                    time.sleep(0.01) 
+        ```    
+
+- flask 
     - 파이썬을 통해 웹개발을 할 수 있게 해주는 웹개발 프레임워크
         - 다양한 프레임워크
             - PHP - 라라벨, Node.js - xpress, java - ruby
             - python - flask, django
     - 용량이 작고 사용법이 간단 -> 라즈베리파이에서 쉽게 웹을 통해 gpio 제어 가능
-    - 가상환경 다시 설치
+    
+    - flask 설치 확인하기 
+        - python - from flask import Flask 입력 후 아무 반응 없으면 설치가 되어있는 상태
+
+    - 가상환경 다시 설치 
         -  python -m venv --system-site-packages env
         - 명령어 실행 후 pip list로 확인해보면 라이브러리가 설치된 상태로 가상환경 만들어짐.
     
+    -  Flask를 돌리기 위한 파이썬의 기본 폼
+        ```py
+        from flask import Flask, render_template
+        app = Flask(__name__)
+
+        @app.route("/")
+        def home():
+            return render_template("html파일명.html")
+
+        if __name__=='__main__':
+            app.run(host='0.0.0.0')
+        ```
+    - flask를 돌리기 위한 규칙
+        - Flask를 돌리는 코드 파일명(위에 적혀있는 코드가 속해져있는 파일)은 'app.py'여야 한다.
+        - html는- 'template' 디렉토리 하위에 속해져있었야한다
+        - 이미지 파일 등을 넣어야하는 경우 파일들은 'static' 디렉토리 하위에 속해져있어야한다.
+
+- Flask 실습 
     - 웹페이지 구현하기
         - flask로 문자 출력
 
@@ -168,7 +210,8 @@ IoT 오픈하드웨어 플랫폼 활용 레포지토리
 
         - led 제어 페이지 구현하기
             - url 접속을 /led/on, /led/off로 접속하면 led를 on, off하는 웹페이지
-        - /<state> 사용하여 led 제어 페이지 구현하기
+        
+        - <state> 사용하여 led 제어 페이지 구현하기
             ```py
             @app.route("/led/<state>")
             def control_led(state):

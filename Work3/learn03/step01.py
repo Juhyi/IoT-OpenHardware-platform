@@ -8,14 +8,6 @@ for stepPin in steps :
 	GPIO.setup(stepPin, GPIO.OUT)
 	GPIO.output(stepPin, 0)
 
-step_seq = [
-	[0, 0, 0, 1],
-	[0, 0, 1, 0],
-	[0, 1, 0, 0],
-	[1, 0, 0, 0]
-]
-
-
 try:
 	while True:
 		GPIO.output(steps[0], 0)
