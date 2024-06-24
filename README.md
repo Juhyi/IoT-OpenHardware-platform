@@ -123,3 +123,72 @@ IoT 오픈하드웨어 플랫폼 활용 레포지토리
     <a href="link"><img src="https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi008.png"></a> 
     <a href="link"><img src="https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi007.png"></a> 
 </figure>
+
+## 3일차
+- 릴레이 실습
+    - 릴레이 
+        - 검출된 정보를 갖고 있는 제어 전류의 유무 또는 방향에 따라 다른 회로를 개폐하는 장치
+        - 즉, 입력이 어떤 값에 도달하였을 때 작동하여 다른 회로를 개폐하는 장치로 일종의 자동 스위치
+        - 낮은 전압을 이용하여 더 높은 전얍을 제어하는데 많이 사용됨
+        - 교류, 직류 구분 없이 사용 가능
+        - 잡음 발생, 접점 부의가 마모되어 고장 날 수 있음
+    - 동작 순서
+        - 전원이 공급 -> 코일에 전기가 흘러 자회됨 -> 자화된 전자석에 의해 반대편 스위치 작동 -> 반대편 기기의 전원이 공급
+
+    ![릴레이](https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi011.png)
+    
+    - 실습
+
+- 모터 + 모터 드라이버 실습
+    - 스텝 모터
+        - step 상태에서 pulse에 순서를 부여하여 주어진 펄스 수에 비례한 각도 ㅁ나큼 회전하는 모터
+        - 한 바퀴의 회전을 많은 수의 스텝으로 나눌 수 있는 직류 전기 모터
+        - 입력 신호에 따라 일정 각도를 회전하므로 위치 정보를 반환하지 않고도 현재의 위치 정보를 알 수 있다
+    
+    ![스텝 모터](https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi012.png)
+    
+    - 실습
+        - 기초 실습
+        - 기초 실습 for문으로 구현하기
+
+- flask 프레임워크
+    - 파이썬을 통해 웹개발을 할 수 있게 해주는 웹개발 프레임워크
+        - 다양한 프레임워크
+            - PHP - 라라벨, Node.js - xpress, java - ruby
+            - python - flask, django
+    - 용량이 작고 사용법이 간단 -> 라즈베리파이에서 쉽게 웹을 통해 gpio 제어 가능
+    - 가상환경 다시 설치
+        -  python -m venv --system-site-packages env
+        - 명령어 실행 후 pip list로 확인해보면 라이브러리가 설치된 상태로 가상환경 만들어짐.
+    
+    - 웹페이지 구현하기
+        - flask로 문자 출력
+
+            ![웹페이지 화면](https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi013.png)
+
+        - led 제어 페이지 구현하기
+            - url 접속을 /led/on, /led/off로 접속하면 led를 on, off하는 웹페이지
+        - /<state> 사용하여 led 제어 페이지 구현하기
+            ```py
+            @app.route("/led/<state>")
+            def control_led(state):
+                if state == "on":
+                    GPIO.output(led, True)
+                    return "LED ON"
+                elif state == "off":
+                    GPIO.output(led, False)
+                    return "LED OFF"
+                elif state == "clear":
+                    GPIO.cleanup()
+                    return "GPIO Cleanup()"
+            ```    
+            - 192.168.5.3:10011/led/~~ 로 접속하면 led를 제어할 수 있음
+
+        - GET(방식)
+            - 웹 서비스 개발에 사용하는 메서드, 서버에 요청하는 메서드
+            - URL 뒤의 파라미터를 추가하여 데이터를 전달
+            - 간단하고 직관적이지만 URL에 데이터가 노출되어 보안성이 낮음
+            - 예시 - www.example.com?id=mommoo&pass=1234
+
+
+        ![GET방식](https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi014.png)
