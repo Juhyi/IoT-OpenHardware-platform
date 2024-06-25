@@ -250,6 +250,7 @@ IoT 오픈하드웨어 플랫폼 활용 레포지토리
         - led 제어화면 구현 
             
             <img src="https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi001.gif">
+
 - Picamera2 실습
     - 설치 확인
         - pip list 명령창에 입력 후 확인
@@ -262,4 +263,38 @@ IoT 오픈하드웨어 플랫폼 활용 레포지토리
 
         ![실행화면](https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi015.png)
 
+        ![실행화면](https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi016.png)
 
+
+- 4-digit, 7-segement display, FND
+    - 공통 단자를 COMn으로 표기, COM1~ COM4까지 사용
+    - a ~ g, dp등 총 8개의 세그먼트 핀이 존재
+    - 총 12핀으로 구성
+
+        ![실행화면](https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi016.png)
+    
+    - 방식
+        - 공통 음극(Common Cathod)방식
+            - COM1 ~ COM4를 모두 (-) 신호, 데이터 신호는 (+) 신호
+        - 공통 양극(Common Anode) 방식
+            - COM1 ~ COM4를 모두 (+) 신호, 데이터 신호는 (-) 신호
+    
+    - Common Cathod방식 실습
+        - 하나의 com만 연결하여 실습 진행, 실습 진행 전 음극인지 양극인지 확인하기 
+            - COM1에 GND, 데이터 신호 핀 아무곳에 Vcc 연결 했을때 led 불이 켜지면 음극 방식
+
+        - 1을 5초동안 출력하는 display 구현하기
+        
+        - 0 ~ 9 까지 1초마다 숫자가 바뀌는 display 구현하기
+            ```py
+            def display_digit(number):
+             if number in digits:
+                for segment in segments.values():  # 숫자를 표시하기 전에 모든 led off 시키기
+                     GPIO.output(segment, False)
+
+                 for segment in digits[number]:
+                    GPIO.output(segments[segment], True)
+            ```
+            - 메인 실행문은 반복문으로 구현
+
+            
