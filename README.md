@@ -252,8 +252,9 @@ IoT 오픈하드웨어 플랫폼 활용 레포지토리
 
 
 
-https://github.com/Juhyi/IoT-OpenHardware-platform/assets/158007405/731bf963-a611-413f-b3a8-9f63cf4a3af1
 
+
+        https://github.com/Juhyi/IoT-OpenHardware-platform/assets/158007405/e4a84afd-95de-453c-a765-b662d174f1c6
 
 
 
