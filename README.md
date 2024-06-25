@@ -251,7 +251,10 @@ IoT 오픈하드웨어 플랫폼 활용 레포지토리
             
 
 
-https://github.com/Juhyi/IoT-OpenHardware-platform/assets/158007405/b81d191e-7925-432e-97cc-c6cde8d0b7ef
+
+https://github.com/Juhyi/IoT-OpenHardware-platform/assets/158007405/9250911a-80f7-44c6-96e6-1d429d7abec7
+
+
 
 - Picamera2 실습
     - 설치 확인
