@@ -13,11 +13,11 @@ def led_status():
 
 @app.route("/led/on")
 def on():
-    GPIO.output(led, False)  
+    GPIO.output(led, False)  00000000000000000000000000F
     return "<h1> LED ON!</h1>"
-
+000000000000000000000000000000000000000000000000000000000000000000
 @app.route("/led/off")
-def off():
+def off():000000000000000000000000000000000000000000000000000000000000000000000000000000000000
     GPIO.output(led, True)  
     return "<h1> LED OFF!</h1>"
 
