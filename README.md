@@ -248,7 +248,11 @@ IoT 오픈하드웨어 플랫폼 활용 레포지토리
         - remder_template() : html파일을 text 형태로 반환해주는 함수
         - index.html 파일 위치 - 코드파일이 있는 폴더에 template 폴더 생성 후 폴더 안에 위치 
         - led 제어화면 구현 
-            ![실행화면](https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi001.mp4)
+            
+
+
+https://github.com/Juhyi/IoT-OpenHardware-platform/assets/158007405/b81d191e-7925-432e-97cc-c6cde8d0b7ef
+
 - Picamera2 실습
     - 설치 확인
         - pip list 명령창에 입력 후 확인
