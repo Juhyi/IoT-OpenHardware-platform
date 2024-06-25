@@ -271,11 +271,14 @@ IoT 오픈하드웨어 플랫폼 활용 레포지토리
     - a ~ g, dp등 총 8개의 세그먼트 핀이 존재
     - 총 12핀으로 구성
 
-        ![실행화면](https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi016.png)
+        ![7-seg 핀 구성](https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi016.png)
     
     - 방식
         - 공통 음극(Common Cathod)방식
             - COM1 ~ COM4를 모두 (-) 신호, 데이터 신호는 (+) 신호
+        
+        ![Common Cathod 회로구성](https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi017.png)
+        
         - 공통 양극(Common Anode) 방식
             - COM1 ~ COM4를 모두 (+) 신호, 데이터 신호는 (-) 신호
     
