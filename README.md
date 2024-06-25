@@ -235,3 +235,30 @@ IoT 오픈하드웨어 플랫폼 활용 레포지토리
 
 
         ![GET방식](https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi014.png)
+
+## 4일차
+- flask 실습 계속
+    - flask, html 연동하여 post 방식으로 웹 구현하기
+        ```py
+        from flask import Flask, request, render_template #추가하기
+        @app.route('/')
+        def home () :
+            return render_template("index.html")
+        ```
+        - remder_template() : html파일을 text 형태로 반환해주는 함수
+        - index.html 파일 위치 - 코드파일이 있는 폴더에 template 폴더 생성 후 폴더 안에 위치 
+        - led 제어화면 구현 
+            ![실행화면](https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi001.mp4)
+- Picamera2 실습
+    - 설치 확인
+        - pip list 명령창에 입력 후 확인
+    - 실습
+        - 실행시 사진 촬영, test.jpg 생성
+        
+        ![실행화면]
+
+        - 버튼 클릭 시 촬영되고 현재 시간이 파일명인 .jpg 이미지 파일 저장
+
+        ![실행화면](https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi015.png)
+
+
