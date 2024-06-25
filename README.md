@@ -249,18 +249,7 @@ IoT 오픈하드웨어 플랫폼 활용 레포지토리
         - index.html 파일 위치 - 코드파일이 있는 폴더에 template 폴더 생성 후 폴더 안에 위치 
         - led 제어화면 구현 
             
-
-
-
-
-
-        https://github.com/Juhyi/IoT-OpenHardware-platform/assets/158007405/e4a84afd-95de-453c-a765-b662d174f1c6
-
-
-
-
-
-
+            <img src="https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi001.gif">
 - Picamera2 실습
     - 설치 확인
         - pip list 명령창에 입력 후 확인
