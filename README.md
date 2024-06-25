@@ -300,4 +300,8 @@ IoT 오픈하드웨어 플랫폼 활용 레포지토리
             ```
             - 메인 실행문은 반복문으로 구현
 
+
+https://github.com/Juhyi/IoT-OpenHardware-platform/assets/158007405/1cfc31ad-518d-4a7f-8bda-8221f2398004
+
+
             
