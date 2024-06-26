@@ -331,3 +331,6 @@ https://github.com/Juhyi/IoT-OpenHardware-platform/assets/158007405/1cfc31ad-518
             - newSw, oldSw를 사용하여 구현하면 된다.
         
         
+
+https://github.com/Juhyi/IoT-OpenHardware-platform/assets/158007405/3376ed55-b6f5-41ca-848b-0ce34c93d443
+
