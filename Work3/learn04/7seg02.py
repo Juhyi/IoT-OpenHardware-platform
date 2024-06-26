@@ -41,4 +41,3 @@ try:
 
 except:
     GPIO.cleanup()
-    
