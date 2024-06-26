@@ -304,4 +304,30 @@ IoT 오픈하드웨어 플랫폼 활용 레포지토리
 https://github.com/Juhyi/IoT-OpenHardware-platform/assets/158007405/1cfc31ad-518d-4a7f-8bda-8221f2398004
 
 
-            
+## 5일차
+- 4-digit 7-segment 실습 계속
+    - 버튼을 누를때마다 카운트되는 기능 구현하기
+        - 스위치는 풀 다운으로 연결, 7-seg 로 번호 표현은 dictionary 구현
+        - 스위치가 false가 되면 count를 1 증가시키고 (0~9) 10으로 나눈값을 count에 대입하여 count의 수를 display
+    ![실행결과](https://github.com/Juhyi/IoT-OpenHardware-platform/blob/main/imges/raspi019.png)
+
+    - 4-digit 모두 이용하여 1~9999 버튼을 누르면 1씩 증가하는 기능 구현
+        - 각각의 digit을 제어하기 위해서 comN에 GPIO 연결
+        - COM 핀으로 FND를 선택하고 8개의 segment 신호를 받아서 숫자 표기
+        - 빠른 속도로 신호를 전달하여 4개의 FND에 신호가 다 들어오는 것처럼 보임
+        ```py
+         for _ in range(100):  # 100번 반복으로 디스플레이 깜빡임현상 줄여줌
+            display_digit(thousands, 0)
+            display_digit(hundreds, 1)
+            display_digit(tens, 2)
+            display_digit(ones, 3)
+        ```
+        - 구현 방법 
+            - 1. count 숫자값을 단위로 나눠 몫을 각 seg에 전달하여 출력
+            - 2. 각자리를 index로 보고 자릿수가 넘어가면 index값을 증가시켜서 다음 seg에 표현
+
+        - 버튼을 누르고 있지 않아도 display에 숫자를 계속 나타내기 
+            - GPIO.input(swtich) == False를 사용하지 않고
+            - newSw, oldSw를 사용하여 구현하면 된다.
+        
+        
