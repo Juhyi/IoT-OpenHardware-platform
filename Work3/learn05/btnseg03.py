@@ -17,7 +17,6 @@ newSw = 0
 
 index = [0, 0, 0, 0]
 
-
 GPIO.setup(swPin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 for a in pin:
