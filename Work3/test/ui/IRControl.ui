@@ -7,24 +7,37 @@
     <x>0</x>
     <y>0</y>
     <width>597</width>
-    <height>437</height>
+    <height>284</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="btn_1">
+   <widget class="QPushButton" name="centralwidget_2">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>40</y>
+      <x>380</x>
+      <y>160</y>
       <width>99</width>
       <height>30</height>
      </rect>
     </property>
     <property name="text">
-     <string>learn01</string>
+     <string>PushButton</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="statusLabel">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>50</y>
+      <width>121</width>
+      <height>131</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
     </property>
    </widget>
   </widget>

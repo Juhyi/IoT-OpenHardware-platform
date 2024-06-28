@@ -11,7 +11,7 @@ class WindowClass(QMainWindow, form_class):
 
 	def lcdslot(self, value):
 		self.lcdNumber.display(value)
-		
+
 if __name__ == "__main__":
 	app = QApplication(sys.argv)
 	myWindow = WindowClass()
