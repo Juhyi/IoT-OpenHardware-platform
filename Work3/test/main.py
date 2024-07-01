@@ -1,66 +1,33 @@
 import sys
 from PyQt5.QtGui import QFont
+from PyQt5.QtCore import QTimer
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QLabel
 from PyQt5 import uic
-import led_control
+import led_buzz
 from gpio_thread import GPIOThread
-
+import window1
+import window2
 # Main.ui 파일을 로드
 main_form_class = uic.loadUiType("ui/MainWindow.ui")[0]
-control_form_class = uic.loadUiType("ui/ControlWindow.ui")[0]
-ir_form_class = uic.loadUiType("ui/IRControl.ui")[0]
+learn1_form_class = uic.loadUiType("ui/window1.ui")[0]
+learn2_form_class = uic.loadUiType("ui/window2.ui")[0]
+learn3_form_class = uic.loadUiType("ui/window3.ui")[0]
+learn4_form_class = uic.loadUiType("ui/window4.ui")[0]
+learn5_form_class = uic.loadUiType("ui/window5.ui")[0]
+learn6_form_class = uic.loadUiType("ui/window6.ui")[0]
 
-class ControlWindow(QMainWindow, control_form_class):
-    def __init__(self):
-        super().__init__()
-        self.setupUi(self)
 
-        # 초기 설정
-        led_control.setup()
-
-        # 버튼 클릭 이벤트와 슬롯 연결
-        self.btnledcolor.clicked.connect(self.change_color)
-
-        # LED 상태 레이블 초기화
-        self.update_led_status()
-
-        # GPIO 스레드 시작
-        self.gpio_thread = GPIOThread(self.change_color)
-        self.gpio_thread.start()
-
-        font = QFont()
-        font.setPointSize(20)
-        font.setBold(True)
-        self.statusLabel.setFont(font)
-
-    def change_color(self):
-        led_control.change_led_color()
-        # LED 색상 업데이트
-        self.update_led_status()
-
-    def update_led_status(self):
-        if led_control.current_index == 0:
-            self.statusLabel.setText("Current LED: Green")
-        elif led_control.current_index == 1:
-            self.statusLabel.setText("Current LED: Red")
-        elif led_control.current_index == 2:
-            self.statusLabel.setText("Current LED: Blue")
-
-    def closeEvent(self, event):
-        self.gpio_thread.stop()
-        self.gpio_thread.join()
-        led_control.cleanup()
-        event.accept()
-
-class IRControl(QMainWindow, ir_form_class):
+class Learn2Window(QMainWindow, learn2_form_class):
 		def __init__(self):
 			super().__init__()
-			self.setupUi(self)		
+			self.setupUi(self)
 
-			font = QFont()
-			font.setPointSize(20)  # 글꼴 크기 설정
-			font.setBold(True)     # 글꼴 두께 설정
-			self.statusLabel.setFont(font)
+			self.sensor_btn.clicked.connect(self.start_sensor_detection)
+			self.sensor_timer.timeout.connect(self.check_sensor)
+			#font = QFont()
+			#font.setPointSize(15)  # 글꼴 크기 설정
+			#font.setBold(True)     # 글꼴 두께 설정
+			#self.statusLabel.setFont(font)
 
 
 class MainWindow(QMainWindow, main_form_class):
@@ -69,23 +36,22 @@ class MainWindow(QMainWindow, main_form_class):
         self.setupUi(self)
 
         # 서브 창을 열기 위한 버튼 클릭 이벤트와 슬롯 연결
-        self.button1.clicked.connect(self.open_control_window)
-        self.button2.clicked.connect(self.open_IR_window)
+        self.button1.clicked.connect(self.open_learn1_window)
+        self.button2.clicked.connect(self.open_learn2_window)
         # ControlWindow 인스턴스 생성
-        self.control_window = None
-        self.ir_window = None
-    def open_control_window(self):
-        if self.control_window is None:
-            self.control_window = ControlWindow()
-        self.control_window.show()
-
-    def open_IR_window(self):
-    		if self.ir_window is None:
-    				self.ir_window = IRControl()
-    		self.ir_window.show()
-
+        self.learn1_window = None
+        self.learn2_window = None
+    def open_learn1_window(self):
+        if self.learn1_window is None:
+            self.learn1_window = window1.Learn1Window()
+        self.learn1_window.show()
+    def open_learn2_window(self):
+        if self.learn2_window is None:
+            self.learn2_window = window2.Learn2Window()
+        self.learn2_window.show()
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     mainWindow = MainWindow()
+
     mainWindow.show()
     sys.exit(app.exec_())

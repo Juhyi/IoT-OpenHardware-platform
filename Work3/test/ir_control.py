@@ -1,46 +1,37 @@
-import sys
 import RPi.GPIO as GPIO
 import time
-from PyQt5.QtWidgets import QApplication, QMainWindow
-from PyQt5 import uic
-from PyQt5.QtCore import QTimer
 
-# UI 파일 로드
-ui_path = "ui/IRControl.ui"
-Ui_MainWindow, QtBaseClass = uic.loadUiType(ui_path)
-
-# GPIO 설정
-pirPin = 4
-
+SENSOR_PIN = 17
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(pirPin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
-class IRDetectionApp(QMainWindow, Ui_MainWindow):
-    def __init__(self):
-        super().__init__()
-        self.setupUi(self)
+def setup_sensor():
+    GPIO.setup(SENSOR_PIN, GPIO.IN)
 
-        self.setWindowTitle("IR Detection")
-        self.statusLabel.setText("IR Sensor Status: Waiting...")
+def is_sensor_detected():
+    return GPIO.input(SENSOR_PIN) == GPIO.HIGH
 
-        # 타이머 설정
-        self.timer = QTimer(self)
-        self.timer.timeout.connect(self.check_ir_status)
-        self.timer.start(100)  # 0.1초마다 상태 확인
+def measure():
+    GPIO.output(trigPin, True)
+    time.sleep(0.00001)
+    GPIO.output(trigPin, False)
+    start = time.time()
 
-    def check_ir_status(self):
-        if GPIO.input(pirPin) == GPIO.HIGH:
-            self.statusLabel.setText("IR Sensor Status: Detected")
-            # 감지되면 여기에 추가적인 동작을 수행할 수 있음
-        else:
-            self.statusLabel.setText("IR Sensor Status: Not Detected")
+    while GPIO.input(echoPin) == False:
+        start =time.time()
+    while GPIO.input(echoPin) == True:
+        stop = time.time()
+    dlapsed = stop - start
+    distance = (dlapsed * 19000) / 2
 
-    def closeEvent(self, event):
-        GPIO.cleanup()
-        event.accept()
+    return distance 
 
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    mainWindow = IRDetectionApp()
-    mainWindow.show()
-    sys.exit(app.exec_())
+
+trigPin = 27
+echoPin = 17
+BUZZER_PIN = 13
+melody = [261]
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(trigPin, GPIO.OUT)
+GPIO.setup(echoPin, GPIO.IN)
+GPIO.setup(BUZZER_PIN, GPIO.OUT)
+Buzz = GPIO.PWM(BUZZER_PIN, 440)

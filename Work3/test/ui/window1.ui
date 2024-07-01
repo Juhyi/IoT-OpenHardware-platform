@@ -92,7 +92,7 @@
      <enum>Qt::Horizontal</enum>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_6">
+   <widget class="QPushButton" name="mi_btn">
     <property name="geometry">
      <rect>
       <x>600</x>
@@ -102,10 +102,10 @@
      </rect>
     </property>
     <property name="text">
-     <string>PushButton</string>
+     <string>Mi</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_7">
+   <widget class="QPushButton" name="do_btn">
     <property name="geometry">
      <rect>
       <x>500</x>
@@ -115,10 +115,10 @@
      </rect>
     </property>
     <property name="text">
-     <string>PushButton</string>
+     <string>Do</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_8">
+   <widget class="QPushButton" name="re_btn">
     <property name="geometry">
      <rect>
       <x>550</x>
@@ -128,10 +128,10 @@
      </rect>
     </property>
     <property name="text">
-     <string>PushButton</string>
+     <string>Re</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_10">
+   <widget class="QPushButton" name="fa_btn">
     <property name="geometry">
      <rect>
       <x>650</x>
@@ -141,10 +141,10 @@
      </rect>
     </property>
     <property name="text">
-     <string>PushButton</string>
+     <string>Fa</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_11">
+   <widget class="QPushButton" name="la_btn">
     <property name="geometry">
      <rect>
       <x>750</x>
@@ -154,10 +154,10 @@
      </rect>
     </property>
     <property name="text">
-     <string>PushButton</string>
+     <string>La</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_12">
+   <widget class="QPushButton" name="sol_btn">
     <property name="geometry">
      <rect>
       <x>700</x>
@@ -167,10 +167,10 @@
      </rect>
     </property>
     <property name="text">
-     <string>PushButton</string>
+     <string>Sol</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_13">
+   <widget class="QPushButton" name="si_btn">
     <property name="geometry">
      <rect>
       <x>800</x>
@@ -180,7 +180,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>PushButton</string>
+     <string>Si</string>
     </property>
    </widget>
    <widget class="QLabel" name="label">
@@ -430,7 +430,7 @@
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt; font-weight:600; color:#0000ff; vertical-align:sub;&quot;&gt;Digital Piano&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_16">
+   <widget class="QPushButton" name="start3_btn">
     <property name="geometry">
      <rect>
       <x>550</x>
@@ -586,7 +586,7 @@
      <enum>Qt::Vertical</enum>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_17">
+   <widget class="QPushButton" name="high_do_btn">
     <property name="geometry">
      <rect>
       <x>850</x>
@@ -596,7 +596,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>PushButton</string>
+     <string>Do</string>
     </property>
    </widget>
    <widget class="QPushButton" name="stop1_btn">

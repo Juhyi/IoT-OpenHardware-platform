@@ -2,7 +2,7 @@
 import threading
 import time
 import RPi.GPIO as GPIO
-import led_control
+import led_buzz
 
 SWITCH_PIN = 6
 
@@ -17,7 +17,7 @@ class GPIOThread(threading.Thread):
         while self.running:
             if GPIO.input(SWITCH_PIN) == GPIO.LOW:  # 스위치 눌림 감지
                 self.callback()
-                time.sleep(0.2)  # 디바운싱을 위해 잠시 대기
+                time.sleep(0.2)
 
     def stop(self):
         self.running = True
