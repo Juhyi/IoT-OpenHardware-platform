@@ -92,10 +92,10 @@
      <enum>Qt::Horizontal</enum>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_16">
+   <widget class="QPushButton" name="start_motor_btn">
     <property name="geometry">
      <rect>
-      <x>200</x>
+      <x>240</x>
       <y>60</y>
       <width>91</width>
       <height>31</height>
@@ -105,6 +105,32 @@
      <string>START</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="stop_motor_btn">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>60</y>
+      <width>91</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>STOP</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="angle_label">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>70</y>
+      <width>54</width>
+      <height>12</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -112,7 +138,7 @@
      <x>0</x>
      <y>0</y>
      <width>511</width>
-     <height>28</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuLearn3">

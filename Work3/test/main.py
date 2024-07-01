@@ -16,20 +16,6 @@ learn4_form_class = uic.loadUiType("ui/window4.ui")[0]
 learn5_form_class = uic.loadUiType("ui/window5.ui")[0]
 learn6_form_class = uic.loadUiType("ui/window6.ui")[0]
 
-
-class Learn2Window(QMainWindow, learn2_form_class):
-		def __init__(self):
-			super().__init__()
-			self.setupUi(self)
-
-			self.sensor_btn.clicked.connect(self.start_sensor_detection)
-			self.sensor_timer.timeout.connect(self.check_sensor)
-			#font = QFont()
-			#font.setPointSize(15)  # 글꼴 크기 설정
-			#font.setBold(True)     # 글꼴 두께 설정
-			#self.statusLabel.setFont(font)
-
-
 class MainWindow(QMainWindow, main_form_class):
     def __init__(self):
         super().__init__()
@@ -38,9 +24,19 @@ class MainWindow(QMainWindow, main_form_class):
         # 서브 창을 열기 위한 버튼 클릭 이벤트와 슬롯 연결
         self.button1.clicked.connect(self.open_learn1_window)
         self.button2.clicked.connect(self.open_learn2_window)
+        self.button3.clicked.connect(self.open_learn3_window)
+        self.button4.clicked.connect(self.open_learn4_window)
+        self.button5.clicked.connect(self.open_learn5_window)
+        self.button6.clicked.connect(self.open_learn6_window)
         # ControlWindow 인스턴스 생성
         self.learn1_window = None
         self.learn2_window = None
+        self.learn3_window = None
+        self.learn4_window = None
+        self.learn5_window = None
+        self.learn6_window = None
+
+
     def open_learn1_window(self):
         if self.learn1_window is None:
             self.learn1_window = window1.Learn1Window()
@@ -49,6 +45,23 @@ class MainWindow(QMainWindow, main_form_class):
         if self.learn2_window is None:
             self.learn2_window = window2.Learn2Window()
         self.learn2_window.show()
+    def open_learn3_window(self):
+        if self.learn3_window is None:
+            self.learn3_window = window3.Learn2Window()
+        self.learn3_window.show()
+    def open_learn4_window(self):
+        if self.learn4_window is None:
+            self.learn4_window = window4.Learn2Window()
+        self.learn4_window.show()
+    def open_learn5_window(self):
+        if self.learn5_window is None:
+            self.learn5_window = window5.Learn2Window()
+        self.learn5_window.show()
+    def open_learn6_window(self):
+        if self.learn6_window is None:
+            self.learn6_window = window6.Learn2Window()
+        self.learn6_window.show()
+
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     mainWindow = MainWindow()

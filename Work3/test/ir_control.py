@@ -1,37 +1,96 @@
-import RPi.GPIO as GPIO
+import sys
 import time
+from PyQt5.QtGui import QFont
+from PyQt5.QtCore import QTimer
+from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QLabel
+from PyQt5 import uic
+import ir_ultra_control  # 적외선/초음파 센서 제어
+import RPi.GPIO as GPIO
 
-SENSOR_PIN = 17
+# LED 핀 설정
+led = 20
 GPIO.setmode(GPIO.BCM)
+GPIO.setup(led, GPIO.OUT)
 
-def setup_sensor():
-    GPIO.setup(SENSOR_PIN, GPIO.IN)
-
-def is_sensor_detected():
-    return GPIO.input(SENSOR_PIN) == GPIO.HIGH
-
-def measure():
-    GPIO.output(trigPin, True)
-    time.sleep(0.00001)
-    GPIO.output(trigPin, False)
-    start = time.time()
-
-    while GPIO.input(echoPin) == False:
-        start =time.time()
-    while GPIO.input(echoPin) == True:
-        stop = time.time()
-    dlapsed = stop - start
-    distance = (dlapsed * 19000) / 2
-
-    return distance 
-
-
-trigPin = 27
-echoPin = 17
-BUZZER_PIN = 13
+# Melody 설정
 melody = [261]
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(trigPin, GPIO.OUT)
-GPIO.setup(echoPin, GPIO.IN)
-GPIO.setup(BUZZER_PIN, GPIO.OUT)
-Buzz = GPIO.PWM(BUZZER_PIN, 440)
+
+# UI 파일 로드
+learn2_form_class = uic.loadUiType("ui/window2.ui")[0]
+
+class Learn2Window(QMainWindow, learn2_form_class):
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+
+        # 적외선 센서 설정
+        ir_ultra_control.setup_sensor()
+        
+        # 버튼 클릭 이벤트 연결
+        self.start_sensor1_btn.clicked.connect(self.start_sensor1_detection)
+        self.stop_sensor1_btn.clicked.connect(self.stop_sensor1_detection)
+        self.start_sensor2_btn.clicked.connect(self.start_sensor2_detection)
+        self.stop_sensor2_btn.clicked.connect(self.stop_sensor2_detection)
+
+        # 타이머 설정
+        self.sensor1_timer = QTimer(self)
+        self.sensor1_timer.timeout.connect(self.check_sensor1)
+        
+        self.sensor2_timer = QTimer(self)
+        self.sensor2_timer.timeout.connect(self.check_distance2)
+
+        # 초기 라벨 설정
+        self.message_label.setText("IR sensor")
+        self.distance_label.setText("Distance: N/A")
+
+    def start_sensor1_detection(self):
+        self.sensor1_timer.start(500)
+
+    def stop_sensor1_detection(self):
+        self.sensor1_timer.stop()
+        self.message_label.setText("IR sensor")
+
+    def start_sensor2_detection(self):
+        self.sensor2_timer.start(500)
+
+    def stop_sensor2_detection(self):
+        self.sensor2_timer.stop()
+        self.distance_label.setText("Distance: N/A")
+
+    def check_sensor1(self):
+        if ir_ultra_control.is_sensor_detected():
+            self.message_label.setText("Detected now -- LED ON")
+            GPIO.output(led, True)
+            self.activate_buzzer(distance=1)  # 부저 작동
+        else:
+            self.message_label.setText("No detected -- LED Off")
+            GPIO.output(led, False)
+
+    def check_distance2(self):
+        distance = ir_ultra_control.measure()
+        if distance <= 7:
+            self.activate_buzzer(distance)
+        self.distance_label.setText("Distance: %.2f cm" % distance)
+
+    def activate_buzzer(self, distance):
+        if 5 < distance <= 7:
+            ir_ultra_control.Buzz.start(100)
+            ir_ultra_control.Buzz.ChangeFrequency(melody[0])
+            time.sleep(0.3)
+            ir_ultra_control.Buzz.stop()
+        elif 3 < distance <= 5:
+            ir_ultra_control.Buzz.start(100)
+            ir_ultra_control.Buzz.ChangeFrequency(melody[0])
+            time.sleep(0.1)
+            ir_ultra_control.Buzz.stop()
+        elif distance <= 3:
+            ir_ultra_control.Buzz.start(100)
+            ir_ultra_control.Buzz.ChangeFrequency(melody[0])
+            time.sleep(0.001)
+            ir_ultra_control.Buzz.stop()
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    mainWindow = Learn2Window()
+    mainWindow.show()
+    sys.exit(app.exec_())
