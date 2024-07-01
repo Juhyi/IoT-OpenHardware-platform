@@ -417,4 +417,7 @@ https://github.com/Juhyi/IoT-OpenHardware-platform/assets/158007405/3376ed55-b6f
     - sudo apt install qttools5-dev-tools 로 도구 설치
     - vnc에서 Qt-Designer에서 작업 시작
 
-    - 
+## 7일차
+- 개인 평가 진행
+    - pyqt5을 이용하여 지금까지 실습한 센서 rasPi에서 진행
+    
