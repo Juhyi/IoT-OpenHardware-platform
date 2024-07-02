@@ -5,6 +5,8 @@ from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5 import uic
 import stepper_control  # 스텝 모터 제어
 import RPi.GPIO as GPIO
+from PyQt5.QtGui import QFont
+
 
 # LED 핀 설정
 led = 20

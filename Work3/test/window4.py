@@ -1,14 +1,20 @@
 import sys
 import time
+from PyQt5.QtGui import QFont
 from PyQt5.QtCore import QTimer
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QLabel
 from PyQt5 import uic
 from picamera2 import Picamera2
+import RPi.GPIO as GPIO
+import datetime
 
 # UI 파일 로드
-camera_form_class = uic.loadUiType("ui/window_camera.ui")[0]
+learn4_form_class = uic.loadUiType("ui/window4.ui")[0]
 
-class Learn4Window(QMainWindow, camera_form_class):
+SWITCH_PIN = 6
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(SWITCH_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+class Learn4Window(QMainWindow, learn4_form_class):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
@@ -25,7 +31,7 @@ class Learn4Window(QMainWindow, camera_form_class):
         
 
         self.capture1_button.clicked.connect(self.capture_realtime_image)
-        self.switch_button.clicked.connect(self.toggle_switch_monitoring)
+        # self.switch_button.clicked.connect(self.toggle_switch_monitoring)
 
         # 스위치 모니터링 타이머 설정
         self.switch_timer = QTimer(self)
@@ -61,7 +67,7 @@ class Learn4Window(QMainWindow, camera_form_class):
             self.status1_label.setText("Switch monitoring started.")
 
     def check_switch(self):
-        if GPIO.input(switch) == GPIO.HIGH:
+        if GPIO.input(SWITCH_PIN) == GPIO.HIGH:
             now = datetime.datetime.now()
             fileName = now.strftime('%Y-%m-%d %H:%M:%S')
             self.picam2.capture_file(fileName + '.jpg')

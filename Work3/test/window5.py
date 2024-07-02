@@ -5,6 +5,7 @@ from PyQt5.QtCore import QTimer
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5 import uic
 import digit_seg
+from PyQt5.QtGui import QFont
 
 window5_form_class = uic.loadUiType("ui/window5.ui")[0]
 

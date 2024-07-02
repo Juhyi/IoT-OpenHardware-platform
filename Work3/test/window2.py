@@ -47,7 +47,6 @@ class Learn2Window(QMainWindow, learn2_form_class):
         font = QFont()
         font.setPointSize(15)
         font.setBold(True)
-        self.statusLabel.setFont(font)
         self.message_label.setFont(font)
         self.distance_label.setFont(font)
 
@@ -97,8 +96,4 @@ class Learn2Window(QMainWindow, learn2_form_class):
             time.sleep(0.001)
             ir_ultra_control.Buzz.stop()
 
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    mainWindow = Learn2Window()
-    mainWindow.show()
-    sys.exit(app.exec_())
+
