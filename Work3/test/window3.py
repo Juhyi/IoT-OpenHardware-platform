@@ -1,64 +1,68 @@
 import sys
-import time
+from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QLabel, QVBoxLayout, QWidget
 from PyQt5.QtCore import QTimer
-from PyQt5.QtWidgets import QApplication, QMainWindow
-from PyQt5 import uic
-import stepper_control  # 스텝 모터 제어
 import RPi.GPIO as GPIO
-from PyQt5.QtGui import QFont
+import time
+from PyQt5 import uic
+
+steps = [17, 18, 27, 22]  
 
 
-# LED 핀 설정
-led = 20
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(led, GPIO.OUT)
+for stepPin in steps:
+    GPIO.setup(stepPin, GPIO.OUT)
+    GPIO.output(stepPin, 0)
 
-# UI 파일 로드
+
+step_seq = [
+    [0, 0, 0, 1],
+    [0, 0, 1, 0],
+    [0, 1, 0, 0],
+    [1, 0, 0, 0]
+]
+
+current_angle = 0.0
+step_angle = 5.625 / 64  # 28BYJ-48 
 learn3_form_class = uic.loadUiType("ui/window3.ui")[0]
 
 class Learn3Window(QMainWindow, learn3_form_class):
     def __init__(self):
         super().__init__()
-        self.setupUi(self)
 
-        # 스텝 모터 설정
-        stepper_control.setup_motor()
+        self.setWindowTitle("Stepper Motor Controller")
 
-        # 버튼 클릭 이벤트 연결
-        self.start_motor_btn.clicked.connect(self.start_motor)
-        self.stop_motor_btn.clicked.connect(self.stop_motor)
+        self.button = QPushButton("Start Motor")
+        self.button.clicked.connect(self.start_motor)
 
-        # 타이머 설정
-        self.motor_timer = QTimer(self)
-        self.motor_timer.timeout.connect(self.update_angle)
+        self.angle_label = QLabel("Current Anggle: 0.00")
 
-        # 초기 라벨 설정
-        self.angle_label.setText("Angle: 0°")
+        layout = QVBoxLayout()
+        layout.addWidget(self.button)
+        layout.addWidget(self.angle_label)
 
-        font = QFont()
-        font.setPointSize(15)
-        font.setBold(True)
-        self.angle_label.setFont(font)
-        
+        container = QWidget()
+        container.setLayout(layout)
+        self.setCentralWidget(container)
+
+        self.timer = QTimer(self)
+        self.timer.timeout.connect(self.update_motor)
 
     def start_motor(self):
-        stepper_control.start_motor()
-        self.motor_timer.start(100)
-        GPIO.output(led, True)
-        self.angle_label.setText("Motor started")
+        self.timer.start(100)
 
-    def stop_motor(self):
-        stepper_control.stop_motor()
-        self.motor_timer.stop()
-        GPIO.output(led, False)
-        self.angle_label.setText("Motor stopped")
+    def update_motor(self):
+        global current_angle
 
-    def update_angle(self):
-        angle = stepper_control.get_angle()
-        self.angle_label.setText(f"Angle: {angle}°")
+        for seq in step_seq:
+            for pin in range(4):
+                GPIO.output(steps[pin], seq[pin])
+            time.sleep(0.01)
+
+            current_angle += step_angle
+            self.angle_label.setText(f"Current Anggle: {current_angle:.2f}")
 
     def closeEvent(self, event):
-        stepper_control.cleanup()
+        self.timer.stop()
+        GPIO.cleanup()
         event.accept()
-
 

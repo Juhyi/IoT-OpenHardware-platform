@@ -39,7 +39,7 @@ class Learn4Window(QMainWindow, learn4_form_class):
         self.monitoring = False
 
         font = QFont()
-        font.setPointSize(15)
+        font.setPointSize(10)
         font.setBold(True)
         self.status_label.setFont(font)
         self.status1_label.setFont(font)

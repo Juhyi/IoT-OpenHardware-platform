@@ -38,6 +38,7 @@ def play_note_by_index(index, duration=0.5):
     p.stop()
 
 def play_scale():
+
 	for note in NOTES:
 		p = GPIO.PWM(BUZZER_PIN, note)
 		p.start(50)  # 50% 듀티 사이클

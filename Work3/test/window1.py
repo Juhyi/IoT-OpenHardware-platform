@@ -25,7 +25,7 @@ class Learn1Window(QMainWindow, learn1_form_class):
 
         self.start2_btn.clicked.connect(self.switch)
 
-        self.start3_btn.clicked.connect(self.start_timer)
+        self.start3_btn.clicked.connect(self.play_sound)
         self.stop3_btn.clicked.connect(self.stop_timer)
 
         self.do_btn.clicked.connect(lambda: led_buzz.play_note_by_index(0))
@@ -65,13 +65,13 @@ class Learn1Window(QMainWindow, learn1_form_class):
         elif led_buzz.current_index == 2:
             self.statusLabel.setText("Green LED ON")
 
-    def update_autoled_satus(self):
+    def update_autoled_status(self):
         if led_buzz.current_index == 0:
-            self.statusLabel_1.setText("Red LED")
-        elif led_buzz.current_index == 1:
             self.statusLabel_1.setText("Blue LED")
+        elif led_buzz.current_index == 1:
+            self.statusLabel_1.setText("Red LED")
         elif led_buzz.current_index == 2:
-            self.statusLAbel_1.setText("Green LED")
+            self.statusLabel_1.setText("Green LED")
 
     def switch(self):
         self.statusLabel_2.setText("Button push")
@@ -88,4 +88,9 @@ class Learn1Window(QMainWindow, learn1_form_class):
     def start_timer(self):
         self.timer.start(1000)
     def stop_timer(self):
+        self.timer.stop()
+
+    def start_autoled_timer(self):
+        self.timer.start(1000)
+    def stop_autoled_timer(self):
         self.timer.stop()
