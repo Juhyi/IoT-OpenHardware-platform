@@ -1,5 +1,5 @@
 # IoT-OpenHardware-platform
-IoT 오픈하드웨어 플랫폼 활용 레포지토리
+IoT 오픈하드웨어 플랫폼 활용 리포지토리 ✏️
 
 ## 1일차
 - 기본적인 이론
